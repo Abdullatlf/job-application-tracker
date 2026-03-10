@@ -38,14 +38,4 @@ public class DatabaseConnection {
 
     }
 
-    public static void main(String[] args) {
-        Connection connection = connect();
-        if(connection != null){
-            System.out.println("good");
-        }
-    }
-
-
-
-
 }

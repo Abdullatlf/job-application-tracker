@@ -80,6 +80,21 @@ public class JobApplication {
         return note;
     }
 
+    @Override
+    public String toString() {
+        return "JobApplication{" +
+                "applicationId=" + applicationId +
+                ", companyName='" + companyName + '\'' +
+                ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                ", submissionDate=" + submissionDate +
+                ", nextActionDate=" + nextActionDate +
+                ", action='" + action + '\'' +
+                ", note='" + note + '\'' +
+                '}';
+    }
+
 
 
 

@@ -157,6 +157,34 @@ public class JobApplicationDAO{
 
     }
 
+    public static boolean existsById(JobApplication jobApplication){
+        String query = "SELECT COUNT(*) FROM APPLICATION WHERE applicationID = ?";
+        try(Connection connection = DatabaseConnection.connect();
+        PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setInt(1, jobApplication.getApplicationId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1)>0;
+            }
+            return false;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public static boolean existsByCompanyNameAndRole(JobApplication jobApplication){
+        String query = "SELECT * FROM APPLICATION WHERE companyName = ? AND role = ?";
+        try(Connection connection = DatabaseConnection.connect();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, jobApplication.getCompanyName());
+            preparedStatement.setString(2, jobApplication.getRole());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 
 

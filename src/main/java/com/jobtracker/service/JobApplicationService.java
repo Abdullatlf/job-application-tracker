@@ -21,7 +21,7 @@ public class JobApplicationService {
         JobApplicationDAO.deleteJobApplication(jobApplication.getApplicationId());
         return true;
     }
-    public boolean updateJobApplication(JobApplication jobApplication){
+    public static boolean updateJobApplication(JobApplication jobApplication){
         if (!hasRequiredFields(jobApplication))
             return false;
         if(!JobApplicationDAO.existsById(jobApplication))
@@ -39,17 +39,17 @@ public class JobApplicationService {
         return true;
 
     }
-    public List<JobApplication> listOfJobApplication(){
+    public static List<JobApplication> listOfJobApplication(){
         return JobApplicationDAO.listOfJobApplication();
     }
-    public List<JobApplication> listOfUrgent(){
+    public static List<JobApplication> listOfUrgent(){
         return JobApplicationDAO.listOfUrgent();
     }
-    public List<JobApplication> listOfFinished(){
+    public static List<JobApplication> listOfFinished(){
         return JobApplicationDAO.listOfFinished();
     }
 
-    private boolean hasRequiredFields(JobApplication jobApplication){
+    private static boolean hasRequiredFields(JobApplication jobApplication){
         if(jobApplication.getCompanyName() == null
         || jobApplication.getRole() == null
         || jobApplication.getSubmissionDate() == null

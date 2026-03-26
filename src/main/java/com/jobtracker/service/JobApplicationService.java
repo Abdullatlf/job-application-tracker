@@ -7,7 +7,7 @@ import java.util.List;
 
 public class JobApplicationService {
 
-    public boolean createJobApplication(JobApplication jobApplication){
+    public static boolean createJobApplication(JobApplication jobApplication){
         if(!hasRequiredFields(jobApplication))
             return false;
         if(JobApplicationDAO.existsByCompanyNameAndRole(jobApplication))
@@ -15,7 +15,7 @@ public class JobApplicationService {
         JobApplicationDAO.createJobApplication(jobApplication);
         return true;
     }
-    public boolean deleteJobApplication(JobApplication jobApplication){
+    public static boolean deleteJobApplication(JobApplication jobApplication){
         if(!JobApplicationDAO.existsById(jobApplication))
             return false;
         JobApplicationDAO.deleteJobApplication(jobApplication.getApplicationId());
